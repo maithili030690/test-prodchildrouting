@@ -1,0 +1,36 @@
+<!-- <p>products-dashboard works!</p>
+{{ProductsArr|json}} -->
+<ng-container *ngIf="ProductsArr.length>0;else noProd">
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 mb-4 text-right">
+        <button 
+        routerLink="addProduct"
+        mat-raised-button color="accent">Add Product</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <ul class="list-group">
+            <li 
+            [ngClass]="{
+                'active':prod.pid===selectedProdId
+            }"
+            (click)="onProdClick(prod)"
+            [routerLink]="[prod.pid]"
+            [queryParams]="{canReturn:prod.canReturn}"
+            *ngFor="let prod of ProductsArr"
+            class="list-group-item">
+            {{prod.pname}} 
+            </li>
+        </ul>
+    </div>
+    <div class="col-lg-8">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+</div>
+</ng-container>
+<ng-template #noProd>
+    <p class="alert alert-info"> No Products</p>
+</ng-template>

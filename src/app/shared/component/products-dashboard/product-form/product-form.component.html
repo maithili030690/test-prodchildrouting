@@ -1,0 +1,28 @@
+<form [formGroup]="productForm" (ngSubmit)="onProdAdd()">
+    <div class="form-group">
+        <label for="pname">Product Name</label>
+        <input id="pname" type="text" class="form-control" formControlName="pname">
+    </div>
+    <div class="form-group">
+        <label for="pstatus">Product Status</label>
+        <select id="pstatus" type="text" class="form-control" formControlName="pstatus">
+            <option value="">Select Status</option>
+            <option value="In-Progress">In-Progress</option>
+            <option value="Dispatched">Dispatched</option>
+            <option value="Delivered">Delivered</option>
+         </select>
+    </div>
+    <div class="form-group">
+        <label for="canReturn">Product canReturn</label>
+        <select id="canReturn" type="text" class="form-control" formControlName="canReturn">
+            <option value="">Select Status</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+         </select>
+    </div>
+    <button *ngIf="!isInEditMode" type="submit" mat-raised-button color="primary" class="btn-block">Add Product</button>
+    <button
+    [disabled]="updateBtnFlag"
+    (click)="ProductUpdate()"
+    *ngIf="isInEditMode"  type="button" mat-raised-button color="primary"class="btn-block">Update Product</button>
+</form>
